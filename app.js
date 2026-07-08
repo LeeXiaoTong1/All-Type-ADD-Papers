@@ -1,8 +1,10 @@
 
 const STORAGE_KEY = 'all_type_add_literature_table_v1';
+const TASK_TYPES = ['All-Type ADD', 'Speech ADD', 'Sound ADD', 'Singing ADD', 'Music ADD', 'Other'];
 const DEFAULT_ROWS = [
   {
     "title": "Detect All-Type Deepfake Audio: Wavelet Prompt Tuning for Enhanced Auditory Perception",
+    "taskType": "All-Type ADD",
     "source": "A：核心传入文献；Detect All-Type Deepfake Audio 直接来源",
     "venue": "AAAI 2026 / arXiv",
     "dataset": "19LA、Codecfake-A3、CtrSVDD、FakeMusicCaps；覆盖 speech / sound / singing / music",
@@ -14,6 +16,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "AT-ADD: All-Type Audio Deepfake Detection Challenge Evaluation Plan",
+    "taskType": "All-Type ADD",
     "source": "C：网页检索补充；与 A 同一任务体系",
     "venue": "ACM MM 2026 Challenge / arXiv",
     "dataset": "AT-ADD Challenge；Track1 robust speech；Track2 all-type speech/sound/singing/music",
@@ -25,6 +28,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "Interpretable All-Type Audio Deepfake Detection with Audio LLMs via Frequency-Time Reinforcement Learning",
+    "taskType": "All-Type ADD",
     "source": "C：网页检索补充；A 的 all-type 后续方向",
     "venue": "arXiv 2026",
     "dataset": "All-type audio：speech、environmental sound、singing voice、music；约 340K frequency-time CoT demonstrations",
@@ -36,6 +40,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "FakeSound: Deepfake General Audio Detection",
+    "taskType": "Sound ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "Interspeech 2024",
     "dataset": "FakeSound；基于 AudioCaps，使用音频 inpainting / 生成模型构造 fake general audio",
@@ -47,6 +52,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "EnvSDD: Benchmarking Environmental Sound Deepfake Detection",
+    "taskType": "Sound ADD",
     "source": "B/C：由 FakeSound / ESDD 方向继续检索得到",
     "venue": "Interspeech 2025 / arXiv",
     "dataset": "EnvSDD：45.25h real + 316.74h fake environmental sounds",
@@ -58,6 +64,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "The First Environmental Sound Deepfake Detection Challenge: Benchmarking Robustness, Evaluation, and Insights",
+    "taskType": "Sound ADD",
     "source": "C：网页检索补充",
     "venue": "ICASSP 2026 Challenge / arXiv",
     "dataset": "Environmental Sound Deepfake Detection Challenge 数据",
@@ -69,6 +76,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "The Codecfake Dataset and Countermeasures for the Universally Detection of Deepfake Audio",
+    "taskType": "Speech ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "IEEE/ACM TASLP 2025 / arXiv",
     "dataset": "Codecfake；超过 100 万中英文 ALM / codec-based fake audio",
@@ -80,6 +88,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "CtrSVDD: A Benchmark Dataset and Baseline Analysis for Controlled Singing Voice Deepfake Detection",
+    "taskType": "Singing ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "Interspeech 2024 / arXiv",
     "dataset": "CtrSVDD：47.64h bonafide + 260.34h deepfake singing；14 种 SVS/SVC 方法",
@@ -91,6 +100,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "SVDD 2024: The Inaugural Singing Voice Deepfake Detection Challenge",
+    "taskType": "Singing ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "IEEE SLT 2024 / arXiv",
     "dataset": "CtrSVDD、WildSVDD",
@@ -102,6 +112,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "SingFake: Singing Voice Deepfake Detection",
+    "taskType": "Singing ADD",
     "source": "B：由 SVDD / CtrSVDD 方向继续追溯得到",
     "venue": "arXiv 2023 / singing deepfake dataset paper",
     "dataset": "SingFake：多语言、网络场景 singing deepfake clips",
@@ -113,6 +124,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "FSD: An Initial Chinese Dataset for Fake Song Detection",
+    "taskType": "Singing ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "ICASSP 2024 / arXiv",
     "dataset": "FSD 中文假歌数据集；5 种 SVS/SVC 方法生成",
@@ -124,6 +136,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "Audio Features Investigation for Singing Voice Deepfake Detection",
+    "taskType": "Singing ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "ICASSP 2025",
     "dataset": "Singing voice deepfake detection 数据；具体数据集需阅读全文进一步确认",
@@ -135,6 +148,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "FakeMusicCaps: A Dataset for Detection and Attribution of Synthetic Music Generated via Text-to-Music Models",
+    "taskType": "Music ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "Journal of Imaging 2025 / arXiv 2024",
     "dataset": "FakeMusicCaps；MusicCaps 真实音乐 + 多个 text-to-music 模型生成版本",
@@ -146,6 +160,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "SONICS: Synthetic Or Not — Identifying Counterfeit Songs",
+    "taskType": "Music ADD",
     "source": "C：网页检索补充",
     "venue": "ICLR 2025",
     "dataset": "SONICS：97K songs，4,751h；约 49K synthetic songs 来自 Suno / Udio",
@@ -157,6 +172,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "Detecting Music Deepfakes is Easy but Actually Hard",
+    "taskType": "Music ADD",
     "source": "C：网页检索补充",
     "venue": "arXiv 2024；Deezer research",
     "dataset": "Real music + fake reconstructions / music deepfake 数据",
@@ -168,9 +184,10 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "From Voices to Beats: Enhancing Music Deepfake Detection by Identifying Forgeries in Background",
+    "taskType": "Music ADD",
     "source": "C：网页检索补充",
     "venue": "ICASSP 2025",
-    "dataset": "Music deepfake detection 数据；具体公开数据细节需阅读全文确认",
+    "dataset": "Music deepfake detection 数据；具体公开数据细节需阅读全文进一步确认",
     "metrics": "Detection metrics",
     "idea": "关注背景/伴奏中的伪造线索，而不是只看主唱声线。",
     "paper": "https://ieeexplore.ieee.org/document/10890293",
@@ -179,6 +196,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "M6: Multi-generator, Multi-domain, Multi-lingual and Cultural, Multi-genres, Multi-instrument Machine-Generated Music Detection Databases",
+    "taskType": "Music ADD",
     "source": "C：网页检索补充",
     "venue": "Scientific Reports 2026 / arXiv 2024",
     "dataset": "M6：多生成器、多领域、多语言文化、多流派、多乐器机器生成音乐数据",
@@ -190,6 +208,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "ASVspoof 2021: Towards Spoofed and Deepfake Speech Detection in the Wild",
+    "taskType": "Speech ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "IEEE/ACM TASLP 2023",
     "dataset": "ASVspoof 2021 LA / PA / DF",
@@ -201,6 +220,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "ASVspoof 5: Crowdsourced Speech Data, Deepfakes, and Adversarial Attacks at Scale",
+    "taskType": "Speech ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "ASVspoof Workshop 2024 / arXiv",
     "dataset": "ASVspoof 5；crowdsourced speech、deepfake、adversarial attacks",
@@ -212,6 +232,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "ADD 2022: The First Audio Deep Synthesis Detection Challenge",
+    "taskType": "Speech ADD",
     "source": "B/C：由 ASVspoof / ADD challenge 方向追溯",
     "venue": "ICASSP 2022 / arXiv",
     "dataset": "ADD 2022：low-quality fake、partially fake、audio fake game",
@@ -223,6 +244,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "ADD 2023: The Second Audio Deepfake Detection Challenge",
+    "taskType": "Speech ADD",
     "source": "B/C：由 ADD challenge 方向追溯",
     "venue": "IJCAI 2023 Workshop / arXiv",
     "dataset": "ADD 2023：audio fake game、manipulation region location、algorithm recognition",
@@ -234,6 +256,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "Cross-Domain Audio Deepfake Detection: Dataset and Analysis",
+    "taskType": "Speech ADD",
     "source": "C：网页检索补充",
     "venue": "EMNLP 2024",
     "dataset": "CD-ADD；300h+，5 个 zero-shot TTS 模型",
@@ -245,6 +268,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "Towards Generalisable and Calibrated Audio Deepfake Detection with Self-Supervised Representations",
+    "taskType": "Speech ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "Interspeech 2024",
     "dataset": "8 个 audio deepfake datasets",
@@ -256,6 +280,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "Heterogeneity over Homogeneity: Investigating Multilingual Speech Pre-Trained Models for Detecting Audio Deepfake",
+    "taskType": "Speech ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "Findings of NAACL 2024",
     "dataset": "ASVspoof 2019、In-the-Wild、DECRO",
@@ -267,6 +292,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "Audio Deepfake Detection with Self-Supervised XLS-R and SLS Classifier",
+    "taskType": "Speech ADD",
     "source": "C：网页检索补充；与 XLS-R-AASIST 路线高度相关",
     "venue": "ACM MM 2024",
     "dataset": "ASVspoof 2021 DF / LA、In-the-Wild",
@@ -278,6 +304,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "AASIST: Audio Anti-Spoofing Using Integrated Spectro-Temporal Graph Attention Networks",
+    "taskType": "Speech ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "ICASSP 2022",
     "dataset": "ASVspoof 2019 LA/PA 等",
@@ -289,6 +316,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "Automatic Speaker Verification Spoofing and Deepfake Detection Using Wav2vec 2.0 and Data Augmentation",
+    "taskType": "Speech ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "Odyssey 2022",
     "dataset": "ASVspoof 2021 LA / DF",
@@ -300,6 +328,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "Mixture of Experts Fusion for Fake Audio Detection Using Frozen wav2vec 2.0",
+    "taskType": "Speech ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "ICASSP 2025 / arXiv",
     "dataset": "ASVspoof 2019、ASVspoof 2021",
@@ -311,6 +340,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "WaveFake: A Data Set to Facilitate Audio DeepFake Detection",
+    "taskType": "Speech ADD",
     "source": "C：网页检索补充",
     "venue": "NeurIPS Datasets and Benchmarks 2021",
     "dataset": "WaveFake；多种 neural vocoder/TTS 生成音频，两种语言",
@@ -322,6 +352,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "DeepSonar: Towards Effective and Robust Detection of AI-Synthesized Fake Voices",
+    "taskType": "Speech ADD",
     "source": "C：网页检索补充",
     "venue": "ACM MM 2020",
     "dataset": "英文/中文 AI-synthesized fake voice 数据",
@@ -333,6 +364,7 @@ const DEFAULT_ROWS = [
   },
   {
     "title": "The Impact of Silence on Speech Anti-Spoofing",
+    "taskType": "Speech ADD",
     "source": "A：Detect All-Type Deepfake Audio 直接引用",
     "venue": "IEEE/ACM TASLP 2023",
     "dataset": "ASVspoof / speech anti-spoofing 数据",
@@ -343,6 +375,8 @@ const DEFAULT_ROWS = [
     "note": "可用于解释为什么裁剪、静音、head crop / random crop 会显著影响检测结果。"
   }
 ];
+
+const TASK_TYPE_BY_TITLE = new Map(DEFAULT_ROWS.map(row => [row.title, row.taskType]));
 
 const columns = [
   { key: 'title', label: '论文名称' },
@@ -371,22 +405,43 @@ const topScrollbarSpacer = document.getElementById('topScrollbarSpacer');
 let isSyncingHorizontalScroll = false;
 
 function inferTaskType(row) {
-  const text = `${row.title || ''} ${row.dataset || ''} ${row.note || ''}`.toLowerCase();
-  if (/all-type|all type|all-type add|speech.*sound.*singing|singing.*music/.test(text)) return 'All-Type ADD';
-  if (/singing|song|svdd|ctrsvdd/.test(text)) return 'Singing Voice ADD';
-  if (/music|song|fakeMusic|sonics/.test(text)) return 'Music Deepfake Detection';
-  if (/sound|environmental|envsdd|fakesound/.test(text)) return 'Sound Deepfake Detection';
-  if (/survey|survey|review/.test(text)) return 'Survey / Review';
-  if (/asvspoof|speech|voice|wav2vec|xls-r|xslr/.test(text)) return 'Speech ADD';
-  if (/face|image|video|deepfake detection/.test(text)) return 'Other Deepfake Detection';
-  return 'General ADD';
+  const title = String(row.title || '').toLowerCase();
+  const dataset = String(row.dataset || '').toLowerCase();
+  const venue = String(row.venue || '').toLowerCase();
+  const source = String(row.source || '').toLowerCase();
+  const coreText = `${title} ${dataset} ${venue} ${source}`;
+  const allTypeEvidence = `${title} ${dataset}`;
+
+  if (/all-type|all type|speech.*sound.*singing.*music|sound.*singing.*music/.test(allTypeEvidence)) return 'All-Type ADD';
+  if (/music|fakemusic|sonics|suno|udio|text-to-music|beats|machine-generated music/.test(coreText)) return 'Music ADD';
+  if (/singing|svdd|ctrsvdd|singfake|fake song|svs|svc/.test(coreText)) return 'Singing ADD';
+  if (/sound|environmental|envsdd|fakesound|general audio/.test(coreText)) return 'Sound ADD';
+  if (/speech|voice|asvspoof|add 2022|add 2023|tts|vc|wav2vec|xls-r|xslr|aasist|wavefake|deepsonar|codecfake|codec/.test(coreText)) return 'Speech ADD';
+  return 'Other';
+}
+
+function normalizeTaskType(value) {
+  const text = String(value || '').trim();
+  if (TASK_TYPES.includes(text)) return text;
+  const aliases = {
+    'Singing Voice ADD': 'Singing ADD',
+    'Music Deepfake Detection': 'Music ADD',
+    'Sound Deepfake Detection': 'Sound ADD',
+    'Survey / Review': 'Other',
+    'Other Deepfake Detection': 'Other',
+    'General ADD': 'Other'
+  };
+  return aliases[text] || '';
 }
 
 function normalizeRows(data) {
-  return data.map(item => ({
-    taskType: item.taskType || inferTaskType(item),
-    ...item
-  }));
+  return data.map(item => {
+    const canonicalTaskType = TASK_TYPE_BY_TITLE.get(item.title);
+    return {
+      ...item,
+      taskType: canonicalTaskType || normalizeTaskType(item.taskType) || inferTaskType(item)
+    };
+  });
 }
 
 function loadRows() {
@@ -395,15 +450,15 @@ function loadRows() {
   try {
     const parsed = JSON.parse(saved);
     if (Array.isArray(parsed)) return normalizeRows(parsed);
-    return structuredClone(DEFAULT_ROWS);
+    return normalizeRows(structuredClone(DEFAULT_ROWS));
   } catch (error) {
     console.warn('LocalStorage JSON 解析失败，已加载初始表格。', error);
-    return structuredClone(DEFAULT_ROWS);
+    return normalizeRows(structuredClone(DEFAULT_ROWS));
   }
 }
 
 function cloneDefaultRows() {
-  return JSON.parse(JSON.stringify(DEFAULT_ROWS));
+  return normalizeRows(JSON.parse(JSON.stringify(DEFAULT_ROWS)));
 }
 
 function markDirty() {
@@ -550,7 +605,7 @@ function applyFilter() {
 function addRow() {
   rows.push({
     title: '新论文',
-    taskType: 'General ADD',
+    taskType: 'Other',
     source: 'C：自行补充',
     venue: '',
     dataset: '',
@@ -605,12 +660,11 @@ function importJson(file) {
     try {
       const data = JSON.parse(reader.result);
       if (!Array.isArray(data)) throw new Error('JSON 根节点必须是数组。');
-      rows = data.map(item => {
+      rows = normalizeRows(data.map(item => {
         const row = {};
         columns.forEach(col => row[col.key] = String(item[col.key] ?? ''));
-        row.taskType = row.taskType || inferTaskType(row);
         return row;
-      });
+      }));
       markDirty();
       renderTable();
       alert('导入完成。请点击“保存到本机”写入 LocalStorage。');
