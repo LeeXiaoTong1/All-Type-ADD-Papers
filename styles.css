@@ -442,7 +442,7 @@ button.danger {
 
 table {
   width: 100%;
-  min-width: 2300px;
+  min-width: 2750px;
   border-collapse: separate;
   border-spacing: 0;
   table-layout: fixed;
@@ -502,14 +502,16 @@ tbody td.idx-col {
 
 .actions-col { width: 94px; text-align: center; }
 
-th:nth-child(2) { width: 310px; }
-th:nth-child(3) { width: 190px; }
-th:nth-child(4) { width: 178px; }
-th:nth-child(5) { width: 275px; }
-th:nth-child(6) { width: 168px; }
-th:nth-child(7) { width: 350px; }
-th:nth-child(8), th:nth-child(9) { width: 270px; }
-th:nth-child(10) { width: 390px; }
+th:nth-child(2) { width: 300px; }
+th:nth-child(3) { width: 170px; }
+th:nth-child(4) { width: 170px; }
+th:nth-child(5) { width: 240px; }
+th:nth-child(6) { width: 160px; }
+th:nth-child(7) { width: 300px; }
+th:nth-child(8) { width: 330px; }
+th:nth-child(9) { width: 260px; }
+th:nth-child(10) { width: 300px; }
+th:nth-child(11) { width: 360px; }
 
 .cell-edit {
   min-height: 78px;
@@ -716,12 +718,14 @@ td[data-source-type="C"] .cell-edit {
   .link-tools { display: none !important; }
 
   .idx-col { width: 4%; }
-  th:nth-child(2) { width: 14%; }
-  th:nth-child(3) { width: 8%; }
-  th:nth-child(4) { width: 8%; }
-  th:nth-child(5) { width: 11%; }
+  th:nth-child(2) { width: 13%; }
+  th:nth-child(3) { width: 7%; }
+  th:nth-child(4) { width: 7%; }
+  th:nth-child(5) { width: 9%; }
   th:nth-child(6) { width: 6%; }
-  th:nth-child(7) { width: 15%; }
-  th:nth-child(8), th:nth-child(9) { width: 9%; }
-  th:nth-child(10) { width: 16%; }
+  th:nth-child(7) { width: 12%; }
+  th:nth-child(8) { width: 13%; }
+  th:nth-child(9) { width: 8%; }
+  th:nth-child(10) { width: 8%; }
+  th:nth-child(11) { width: 13%; }
 }
