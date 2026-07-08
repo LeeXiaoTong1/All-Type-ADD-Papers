@@ -34,6 +34,19 @@
 - PDF 导出基于浏览器打印功能；建议打印方向选择“横向”。
 - 如果更换浏览器或清除浏览器数据，LocalStorage 中的保存内容可能丢失；重要修改建议同时导出 JSON 备份。
 
+## 任务类型分类口径
+
+当前表格使用以下任务类型：
+
+- All-Type ADD：论文明确统一覆盖 speech、sound、singing、music 等多类音频伪造检测。
+- Speech ADD：语音伪造、TTS / VC、ASVspoof、语音反欺骗、语音跨域泛化等。
+- Sound ADD：环境声、通用非语音音频、general audio deepfake detection。
+- Singing ADD：歌声伪造、SVDD、fake song、SVS / SVC 相关检测。
+- Music ADD：音乐生成、AI song、text-to-music、machine-generated music 检测。
+- Other：暂时无法归入上述主类的补充文献。
+
+只有真正同时面向多类音频形态的论文才标为 All-Type ADD；仅被 all-type 论文引用或用于支撑某个子方向的文献，应归入其自身任务类型。
+
 ## Cloudflare Pages 部署
 
 该项目现在属于标准静态网站，无需后端服务器或构建流程：
