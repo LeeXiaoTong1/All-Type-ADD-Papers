@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All-Type ADD 文献表格编辑器</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-accent no-print" aria-hidden="true"></div>
+
+  <header class="app-header no-print">
+    <div class="brand-block">
+      <div class="brand-mark" aria-hidden="true">ADD</div>
+      <div class="brand-copy">
+        <p class="eyebrow">Literature Matrix · Table Editor</p>
+        <h1>All-Type Audio Deepfake Detection 文献表格编辑器</h1>
+        <p>支持表格编辑、增删行、浏览器保存、JSON 备份与横向 PDF 导出。</p>
+      </div>
+    </div>
+    <div class="header-meta" aria-label="当前表格状态">
+      <span class="status-chip"><span class="chip-dot"></span><span id="rowCount">0 条文献</span></span>
+      <span class="status-chip save-chip"><span class="chip-dot"></span><span id="saveState">未保存</span></span>
+    </div>
+  </header>
+
+  <section class="overview-grid no-print" aria-label="功能概览">
+    <article class="overview-card">
+      <span class="card-icon">✎</span>
+      <div>
+        <h2>直接编辑</h2>
+        <p>单击任意单元格即可修改内容，链接列支持一键打开。</p>
+      </div>
+    </article>
+    <article class="overview-card">
+      <span class="card-icon">▣</span>
+      <div>
+        <h2>保存备份</h2>
+        <p>数据写入浏览器 LocalStorage，可配合 JSON 导入导出备份。</p>
+      </div>
+    </article>
+    <article class="overview-card">
+      <span class="card-icon">⎙</span>
+      <div>
+        <h2>PDF 输出</h2>
+        <p>调用浏览器打印窗口，选择“保存为 PDF”即可导出。</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="toolbar no-print" aria-label="工具栏">
+    <div class="toolbar-card search-card">
+      <label for="searchInput"><span class="label-icon">⌕</span> 搜索过滤</label>
+      <input id="searchInput" type="search" placeholder="输入论文名、数据集、来源备注、关键词..." />
+    </div>
+    <div class="toolbar-card action-card" aria-label="操作按钮">
+      <button id="addRowBtn" type="button"><span class="btn-icon">＋</span>新增一行</button>
+      <button id="saveBtn" type="button"><span class="btn-icon">◆</span>保存到本机</button>
+      <button id="exportJsonBtn" type="button"><span class="btn-icon">⇩</span>导出 JSON</button>
+      <label class="file-btn" for="importJsonInput"><span class="btn-icon">⇧</span>导入 JSON</label>
+      <input id="importJsonInput" type="file" accept="application/json,.json" hidden />
+      <button id="resetBtn" type="button" class="secondary"><span class="btn-icon">↺</span>恢复初始表格</button>
+      <button id="printBtn" type="button" class="primary"><span class="btn-icon">⎙</span>导出 PDF</button>
+    </div>
+  </section>
+
+  <section class="help-panel no-print" aria-label="使用提示">
+    <div class="help-title">使用提示</div>
+    <div class="help-text">
+      <span>单击单元格编辑；修改后点击“保存到本机”。</span>
+      <span>导出 PDF 时建议选择 <strong>A4 横向</strong>。</span>
+      <span class="legend"><b class="tag tag-a">A</b> All-Type 原文直接引用</span>
+      <span class="legend"><b class="tag tag-b">B</b> 二级追溯文献</span>
+      <span class="legend"><b class="tag tag-c">C</b> 网页检索补充</span>
+    </div>
+  </section>
+
+  <main class="table-shell">
+    <div class="table-topbar no-print">
+      <div>
+        <p class="eyebrow">Editable Research Table</p>
+        <h2>All-Type ADD 相关文献调研表</h2>
+      </div>
+      <div class="scroll-hint">拖动上方横向滚动条查看完整列 →</div>
+    </div>
+
+    <div class="table-scrollbar-proxy no-print" id="topScrollbar" aria-label="表格横向滚动条" title="拖动这里即可横向查看完整表格">
+      <div class="table-scrollbar-spacer" id="topScrollbarSpacer"></div>
+    </div>
+
+    <div class="print-title">
+      <h2>All-Type Audio Deepfake Detection 相关文献调研表</h2>
+      <p id="printTime"></p>
+    </div>
+
+    <div class="table-scroll" id="tableScroll">
+      <table id="papersTable">
+        <thead>
+          <tr>
+            <th class="idx-col">序号</th>
+            <th>论文名称</th>
+            <th>任务类型</th>
+            <th>来源备注</th>
+            <th>会议/期刊</th>
+            <th>所用数据集</th>
+            <th>评估指标</th>
+            <th>主要思路</th>
+            <th>论文链接</th>
+            <th>代码/项目链接</th>
+            <th>我的理解备注</th>
+            <th class="actions-col no-print">操作</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+
+  <script src="app.js"></script>
+</body>
+</html>
