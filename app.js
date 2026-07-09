@@ -29,14 +29,50 @@ const DEFAULT_ROWS = [
   {
     "title": "Interpretable All-Type Audio Deepfake Detection with Audio LLMs via Frequency-Time Reinforcement Learning",
     "taskType": "All-Type ADD",
-    "source": "C：网页检索补充；A 的 all-type 后续方向",
+    "source": "C：LLM/ALLM 路线补充；A 的 all-type 后续方向",
     "venue": "arXiv 2026",
     "dataset": "All-type audio：speech、environmental sound、singing voice、music；约 340K frequency-time CoT demonstrations",
-    "metrics": "ADD 检测指标；论文报告 all-type SOTA 表现",
+    "metrics": "ACC / all-type ADD 检测指标；同时关注解释质量",
     "idea": "用 Audio LLM、Frequency-Time CoT 和 FT-GRPO，让模型不仅判别真假，还输出时频依据。",
     "paper": "https://arxiv.org/abs/2601.02983",
     "code": "https://github.com/xieyuankun/ALLM-ADD-FT-GRPO",
-    "note": "这是 all-type ADD 的可解释化路线。它与传统二分类检测器不同，更强调模型为什么判 fake。"
+    "note": "这是 all-type ADD 的可解释化路线。相比 ALLM4ADD 式二分类问答，它把重点从“能判断”推进到“能解释”。"
+  },
+  {
+    "title": "ALLM4ADD: Unlocking the Capabilities of Audio Large Language Models for Audio Deepfake Detection",
+    "taskType": "Speech ADD",
+    "source": "C：LLM/ALLM 路线补充；Audio QA 式 ADD",
+    "venue": "ACM MM 2025 / arXiv",
+    "dataset": "主要面向 speech ADD；将 ADD 转化为 real/fake audio question answering",
+    "metrics": "EER / fake audio detection metrics",
+    "idea": "首次系统验证 Audio LLM 用于 ADD 的可行性；先做 zero-shot 分析，再通过 SFT 让模型回答音频是真还是假。",
+    "paper": "https://arxiv.org/abs/2505.11079",
+    "code": "https://github.com/ucas-hao/qwen_audio_for_add",
+    "note": "这是 ALLM 二分类检测路线的代表工作。价值在于证明 ALLM 可以做 ADD，但输出主要是标签，解释粒度仍较弱。"
+  },
+  {
+    "title": "Investigating the Viability of Employing Multi-modal Large Language Models in the Context of Audio Deepfake Detection",
+    "taskType": "Speech ADD",
+    "source": "C：LLM/MLLM 路线补充；可行性研究",
+    "venue": "IJCB 2025 / arXiv 2026",
+    "dataset": "主要面向 audio/speech deepfake detection；比较 zero-shot 与 fine-tuned 设置",
+    "metrics": "Binary decision metrics / ADD detection metrics",
+    "idea": "研究 Qwen2-Audio-7B-Instruct、SALMONN 等 MLLM 在音频伪造检测中的表现，探索多提示、问答式 real/fake 判断。",
+    "paper": "https://arxiv.org/abs/2601.00777",
+    "code": "未检索到稳定公开官方代码",
+    "note": "与 ALLM4ADD 同属“LLM/MLLM 判断真假”路线。结论上强调未经过任务训练时表现有限，微调后域内表现更有潜力。"
+  },
+  {
+    "title": "SpeechLLM-as-Judges: Towards General and Interpretable Speech Quality Evaluation",
+    "taskType": "Other",
+    "source": "C：LLM-as-judge 旁支补充；含 deepfake detection 子任务",
+    "venue": "ACL 2026 / arXiv",
+    "dataset": "SpeechEval：32,207 multilingual speech clips、128,754 annotations；含 quality assessment、pairwise comparison、improvement suggestion、deepfake detection",
+    "metrics": "Speech quality evaluation metrics / deepfake detection 子任务指标",
+    "idea": "提出 SpeechLLM-as-judge 范式，用结构化解释和 reward optimization 训练语音质量评估 LLM。",
+    "paper": "https://arxiv.org/abs/2510.14664",
+    "code": "https://github.com/NKU-HLT/SpeechLLM-as-Judges",
+    "note": "不是专门的 ADD 或 all-type ADD 文献，但可作为“解释式语音判断 / LLM-as-judge”旁支支撑，帮助说明 LLM 评审式解释能力。"
   },
   {
     "title": "FakeSound: Deepfake General Audio Detection",
@@ -187,7 +223,7 @@ const DEFAULT_ROWS = [
     "taskType": "Music ADD",
     "source": "C：网页检索补充",
     "venue": "ICASSP 2025",
-    "dataset": "Music deepfake detection 数据；具体公开数据细节需阅读全文进一步确认",
+    "dataset": "Music deepfake detection 数据；具体公开数据细节需阅读全文确认",
     "metrics": "Detection metrics",
     "idea": "关注背景/伴奏中的伪造线索，而不是只看主唱声线。",
     "paper": "https://ieeexplore.ieee.org/document/10890293",
@@ -444,12 +480,20 @@ function normalizeRows(data) {
   });
 }
 
+function mergeDefaultRows(data) {
+  const normalizedRows = normalizeRows(data);
+  const existingTitles = new Set(normalizedRows.map(row => row.title));
+  const missingDefaults = normalizeRows(JSON.parse(JSON.stringify(DEFAULT_ROWS)))
+    .filter(row => !existingTitles.has(row.title));
+  return [...normalizedRows, ...missingDefaults];
+}
+
 function loadRows() {
   const saved = localStorage.getItem(STORAGE_KEY);
   if (!saved) return normalizeRows(structuredClone(DEFAULT_ROWS));
   try {
     const parsed = JSON.parse(saved);
-    if (Array.isArray(parsed)) return normalizeRows(parsed);
+    if (Array.isArray(parsed)) return mergeDefaultRows(parsed);
     return normalizeRows(structuredClone(DEFAULT_ROWS));
   } catch (error) {
     console.warn('LocalStorage JSON 解析失败，已加载初始表格。', error);
