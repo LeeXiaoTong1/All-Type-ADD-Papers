@@ -47,6 +47,8 @@
 
 只有真正同时面向多类音频形态的论文才标为 All-Type ADD；仅被 all-type 论文引用或用于支撑某个子方向的文献，应归入其自身任务类型。
 
+基于 LLM / ALLM / MLLM 的 ADD 文献仍按其主要音频范围归类。例如，ALLM4ADD 主要服务 speech ADD，因此标为 Speech ADD；FT-GRPO 同时覆盖 speech、environmental sound、singing voice 和 music，因此标为 All-Type ADD。方法路线信息统一写入“主要思路”和“我的理解备注”列，便于同时保留“任务对象”和“技术路线”两层信息。
+
 ## Cloudflare Pages 部署
 
 该项目现在属于标准静态网站，无需后端服务器或构建流程：
